@@ -1,20 +1,29 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-function Ability(props) {
+function Ability(props = []) {
     const [score, setScore] = new useState(props.score);
+    const [mod, setMod] = new useState(modCalc(props.score));
+
+    useEffect(() => {
+        setMod(modCalc(score));
+    }, [score]);
+
+    useEffect(() => {
+        localStorage.setItem(`${props.title}-scr`, score)
+    }, [score])
 
     function reduce() {
-        setScore(x => x - 1)
+        setScore(x => x - 1);
     }
 
     function increase() {
-        setScore(x => x + 1)
+        setScore(x => x + 1);
     }
 
-    function mod() {
-        return Math.floor(x => (x-10)/2)
+    function modCalc(x) {
+        return Math.floor((x-10)/2)
     }
-    console.log(mod)
+
     return (
         <div>
             <p>{props.title}</p>
