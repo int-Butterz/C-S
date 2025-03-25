@@ -1,0 +1,54 @@
+#abScore {
+    border: 5px solid black;
+    border-radius: 15px;
+    width: 95px;
+    height: 115px;
+    margin: 5px;
+    padding: 5px;
+
+    /**/
+    display: flex;
+    flex-flow: wrap column;
+    align-items: center;
+    justify-content: center;
+}
+
+.abScore-e {
+    margin: 7px 0px;
+}
+
+.button {
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+#score {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 3px solid black;
+    border-radius: 10px;
+    width: 80px;
+}
+
+#modifier {
+    display: flex;
+    justify-content: center;
+    border: 3px solid black;
+    border-radius: 10px;
+    width: 30px;
+    padding: 2px;
+    font-size: larger;
+}
+
+#title {
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    text-decoration: underline overline 2px;
+}

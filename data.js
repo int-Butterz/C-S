@@ -30,3 +30,7 @@ export const abilities = [
         score: 10,
     }
 ]
+
+function modCalc(x) {
+    return Math.floor((x-10)/2)
+}

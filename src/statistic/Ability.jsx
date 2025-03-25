@@ -1,33 +1,42 @@
 import { useState, useEffect } from 'react'
+import './Ability.css'
 
-function Ability(props = []) {
-    const [score, setScore] = new useState(props.score);
-    const [mod, setMod] = new useState(modCalc(props.score));
+function Ability({id, title, score, updateAbility}) {
+    const [abScore, setAbScore] = new useState(score);
+    const [mod, setMod] = new useState(modCalc(score));
 
     useEffect(() => {
-        setMod(modCalc(score));
-    }, [score]);
+        setMod(modCalc(abScore));
+        updateAbility(id, abScore);
+    }, [abScore]);
 
     function increase() {
-        setScore(x => x + 1);
+        setAbScore(prevScore => {
+                return (prevScore + 1 > 30) ? prevScore : prevScore + 1;
+            }
+        )
     }
     
     function reduce() {
-        setScore(x => x - 1);
+        setAbScore(prevScore => {
+                return (prevScore - 1 < 0) ? prevScore : prevScore - 1;
+            }
+        )   
     }
     
     function modCalc(x) {
-        return Math.floor((x-10)/2)
+        const mod = Math.floor((x-10)/2);
+        return mod > 0 ? "+" + mod : mod;
     }
 
     return (
-        <div>
-            <p>{props.title}</p>
-            <p>{mod}</p>
-            <p>
-                <button onClick={reduce}>-</button>
-                {score}
-                <button onClick={increase}>+</button>
+        <div id='abScore'>
+            <p className='abScore-e' id='title'>{title}</p>
+            <p className='abScore-e' id='modifier'>{mod}</p>
+            <p className='abScore-e' id='score'>
+                <button className='button' onClick={reduce}>-</button>
+                {abScore}
+                <button className='button' onClick={increase}>+</button>
             </p>
         </div>
     )
