@@ -8,18 +8,14 @@ function Ability(props = []) {
         setMod(modCalc(score));
     }, [score]);
 
-    useEffect(() => {
-        localStorage.setItem(`${props.title}-scr`, score)
-    }, [score])
-
-    function reduce() {
-        setScore(x => x - 1);
-    }
-
     function increase() {
         setScore(x => x + 1);
     }
-
+    
+    function reduce() {
+        setScore(x => x - 1);
+    }
+    
     function modCalc(x) {
         return Math.floor((x-10)/2)
     }

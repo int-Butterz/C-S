@@ -1,16 +1,20 @@
 import Ability from "./Ability.jsx"
 import { abilities } from "../../data.js"
-
-// if (localStorage.getItem("abilities") == null) {
-//     abilities = localStorage.setItem("abilties", JSON.stringify(abilities))
-// } else {
-//     abilities = JSON.parse(localStorage.getItem("abilities"))
-// }
+import { useState, useEffect } from "react";
 
 function Abilities() {
+    const [data] = new useState(() => { 
+        const savedData = localStorage.getItem("abilities");
+        return savedData ? JSON.parse(savedData) : abilities; 
+    });
+
+    useEffect(() => {
+        localStorage.setItem("abilties", JSON.stringify(data));    
+    }, [data]);
+
     return (
         <>
-            {abilities.map((e) => <Ability key={e.id} {...e} />)}
+            {data.map((e) => <Ability key={e.id} {...e} />)}
         </>
     )
 }
