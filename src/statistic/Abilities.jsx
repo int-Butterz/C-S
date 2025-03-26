@@ -1,6 +1,7 @@
 import Ability from "./Ability.jsx"
 import { abilities } from "../../data.js"
 import { useState, useEffect } from "react";
+import './Abilities.css'
 
 function Abilities() {
     const [data, setData] = new useState(() => { 
@@ -21,9 +22,9 @@ function Abilities() {
     }
 
     return (
-        <>
+        <div className='box'>
             {data.map((e) => (<Ability key={e.id} id={e.id} title={e.title} score={e.score} updateAbility={updateAbility}/>))}
-        </>
+        </div>
     )
 }
 

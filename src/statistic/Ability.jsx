@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { modCalc } from '../../data';
 import './Ability.css'
 
 function Ability({id, title, score, updateAbility}) {
@@ -22,11 +23,6 @@ function Ability({id, title, score, updateAbility}) {
                 return (prevScore - 1 < 0) ? prevScore : prevScore - 1;
             }
         )   
-    }
-    
-    function modCalc(x) {
-        const mod = Math.floor((x-10)/2);
-        return mod > 0 ? "+" + mod : mod;
     }
 
     return (
