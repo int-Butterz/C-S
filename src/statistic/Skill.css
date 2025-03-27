@@ -1,0 +1,15 @@
+.skill {
+    display: flex;
+    justify-content: space-between;
+    border: 2px black solid;
+    width: 180px;
+    padding: 5px;
+}
+
+.skill p {
+    margin: 5px;
+}
+
+.skill p + p {
+    right: 0;
+}

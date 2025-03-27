@@ -1,9 +1,12 @@
 import Skill from "./Skill"
+import { skills } from "../../data"
+import './Skill.css'
+
 function Skills() {
     return (
-        <>
-        <Skill name="Athletics" id="1"/>
-        </>
+        <div>
+            {skills.map(x => <Skill key={x.id} {...x}/>)} 
+        </div>
     )
 }
 

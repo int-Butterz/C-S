@@ -1,3 +1,5 @@
+export const profBonus = { 1:2, 2:3, 3:4, 4:5, 5:6 }
+
 export const abilities = [
     {
         id: 1,
@@ -31,7 +33,134 @@ export const abilities = [
     }
 ]
 
-export const profBonus = { 1:2, 2:3, 3:4, 4:5, 5:6 }
+export const skills = [
+    {
+        id: 1,
+        name: "Acrobatics",
+        ability: 2,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 2,
+        name: "Animal Handling",
+        ability: 5,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 3,
+        name: "Arcana",
+        ability: 4,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 4,
+        name: "Athletics",
+        ability: 1,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 5,
+        name: "Deception",
+        ability: 6,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 6,
+        name: "History",
+        ability: 4,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 7,
+        name: "Insight",
+        ability: 5,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 8,
+        name: "Indimidation",
+        ability: 6,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 9,
+        name: "Investigation",
+        ability: 5,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 10,
+        name: "Medicine",
+        ability: 5,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 11,
+        name: "Nature",
+        ability: 4,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 12,
+        name: "Perception",
+        ability: 5,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 13,
+        name: "Performance",
+        ability: 6,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 14,
+        name: "Persuasion",
+        ability: 6,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 15,
+        name: "Religion",
+        ability: 4,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 16,
+        name: "Sleight of Hand",
+        ability: 2,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 17,
+        name: "Stealth",
+        ability: 2,
+        prof: false,
+        exp: false,
+    },
+    {
+        id: 18,
+        name: "Survival",
+        ability: 5,
+        prof: false,
+        exp: false,
+    }
+]
 
 export const classes = {
     barbarian: {

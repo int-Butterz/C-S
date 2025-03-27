@@ -34,15 +34,15 @@ function Skill({name, id}) {
     }
 
     function reset() {
-        setProf(prevValue => prevValue = 0)
+        setProf(prevValue => prevValue = 0);
     }
 
     return (
-        <>
-        <button onClick={setProfBon} onDoubleClick={setExpertise} onMouseDown={reset}></button>
-        <p>{name}</p>
-        <p>{mod + prof}</p>
-        </>
+        <div className='skill'>
+            <button onClick={setProfBon} onDoubleClick={setExpertise} onMouseDown={reset}></button>
+            <p>{name}</p>
+            <p>{mod + prof}</p>
+        </div>
     )   
 }
 
