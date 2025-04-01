@@ -6,7 +6,7 @@ import './Skill.css'
 function Skills() {
     const [data, setData] = new useState(() => { 
         const savedData = localStorage.getItem("skills");
-        return savedData ? JSON.parse(localStorage.getItem("skills")) : localStorage.setItem("skills", JSON.stringify(skills)); 
+        return savedData ? JSON.parse(savedData) : localStorage.setItem("skills", JSON.stringify(skills)); 
     });
 
     useEffect(() => {
@@ -23,7 +23,7 @@ function Skills() {
 
     return (
         <div>
-            {skills.map(x => <Skill key={x.id} {...x} updateSkill={updateSkill}/>)} 
+            {data.map(x => <Skill key={x.id} {...x} updateSkill={updateSkill}/>)} 
         </div>
     )
 }
