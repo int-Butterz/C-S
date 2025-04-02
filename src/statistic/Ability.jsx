@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { modCalc } from '../../data';
+import { modCalc, sign } from '../../data';
 import './Ability.css'
 
 function Ability({id, title, score, updateAbility}) {
@@ -28,7 +28,7 @@ function Ability({id, title, score, updateAbility}) {
     return (
         <div id='abScore'>
             <p className='abScore-e' id='title'>{title}</p>
-            <p className='abScore-e' id='modifier'>{mod}</p>
+            <p className='abScore-e' id='modifier'>{sign(mod)}</p>
             <p className='abScore-e' id='score'>
                 <button className='button' onClick={reduce}>-</button>
                 {abScore}

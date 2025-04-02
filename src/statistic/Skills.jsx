@@ -22,7 +22,7 @@ function Skills() {
     }
 
     return (
-        <div>
+        <div className='box'>
             {data.map(x => <Skill key={x.id} {...x} updateSkill={updateSkill}/>)} 
         </div>
     )

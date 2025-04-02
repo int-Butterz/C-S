@@ -419,5 +419,9 @@ export const classes = {
 
 export const modCalc = (x) => {
     const mod = Math.floor((x-10)/2);
-    return mod > 0 ? "+" + mod : mod;
+    return mod
+}
+
+export const sign = (x) => {
+    return x > 0 ? "+" + x : x;
 }
