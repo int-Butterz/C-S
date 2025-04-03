@@ -1,6 +1,7 @@
 import { useState, useEffect} from 'react'
 import { modCalc, sign } from '../../data';
 import { profBonus } from '../../data';
+
 const abilityList = JSON.parse(localStorage.getItem("abilities"));
 
 const level = localStorage.getItem("level")
@@ -59,7 +60,9 @@ function Skill({name, id, ability, hasProf, hasExp, updateSkill}) {
 
     return (
         <div className='skill'>
-            <button onClick={handleClick}></button>
+            <button className='skillButton' onClick={handleClick}>
+                <img src=''></img>
+            </button>
             <div className='skillInfo'>
                 <p>{name + abTag(ability-1)}</p>
                 <p>{sign(mod + bonus)}</p>
