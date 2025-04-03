@@ -2,4 +2,10 @@
     border: 2px black solid;
     padding: 5px;
     width: fit-content;
+    height: fit-content;
+    position: relative;
+}
+
+#abilities {
+    margin: 10px;
 }

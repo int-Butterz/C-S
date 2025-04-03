@@ -22,7 +22,7 @@ function Abilities() {
     }
 
     return (
-        <div className='box'>
+        <div className='box' id='abilities'>
             {data.map((e) => (<Ability key={e.id} id={e.id} title={e.title} score={e.score} updateAbility={updateAbility}/>))}
         </div>
     )

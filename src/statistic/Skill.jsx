@@ -2,9 +2,14 @@ import { useState, useEffect} from 'react'
 import { modCalc, sign } from '../../data';
 import { profBonus } from '../../data';
 
-const abilityList = JSON.parse(localStorage.getItem("abilities"));
+import icon_base from "../assets/skills_icons/icon_base.png"
+import icon_proficient from "../assets/skills_icons/icon_proficient.png"
+import icon_expert from "../assets/skills_icons/icon_expert.png"
 
+
+const abilityList = JSON.parse(localStorage.getItem("abilities"));
 const level = localStorage.getItem("level")
+
 function Skill({name, id, ability, hasProf, hasExp, updateSkill}) {
     const [mod, setMod] = new useState(() => {
         return modCalc(abilityList[ability-1].score)
@@ -12,6 +17,8 @@ function Skill({name, id, ability, hasProf, hasExp, updateSkill}) {
     const [hasExpertise, setHasExpertise] = new useState(hasExp);
     const [hasProficiency, setHasProficiency] = new useState(hasProf);
     const [bonus, setBonus] = new useState(hasProficiency == true ? loadProf() : 0);
+    
+    
     
     function loadProf() {
         if (level >= 17) {
@@ -28,43 +35,56 @@ function Skill({name, id, ability, hasProf, hasExp, updateSkill}) {
             return 0;
         }
     }
-
+    
     useEffect(() => {
         updateSkill(id, hasProficiency, hasExpertise);
     }, [hasProficiency, hasExpertise]);
     
-
+    
     function handleClick() {
         setBonus((prevValue) => {
-                if (hasProficiency == true && hasExpertise == true) {
-                    setHasProficiency(false)
-                    setHasExpertise(false)
-                    prevValue = 0;
-                    return prevValue;
-                } else if (hasProficiency == true && hasExpertise == false) {
-                    setHasExpertise(true)
-                    return prevValue * 2;
-                } else if (hasProficiency == false && hasExpertise == false) {
-                    setHasProficiency(true)
-                    prevValue = loadProf();
-                    return prevValue;
-                };
-            }
-        )
-    }
+            if (hasProficiency == true && hasExpertise == true) {
+                setHasProficiency(false)
+                setHasExpertise(false)
 
-    function abTag(ab) {
-        let x = (abilityList[ab].title).slice(0, 3).toUpperCase()
-        return ` (${x})`
-    }
+                prevValue = 0;
+                return prevValue;
+            } else if (hasProficiency == true && hasExpertise == false) {
+                setHasExpertise(true)
+                return prevValue * 2;
+            } else if (hasProficiency == false && hasExpertise == false) {
+                setHasProficiency(true)
+                prevValue = loadProf();
+                return prevValue;
+            };
+        }
+    )
+}
 
-    return (
-        <div className='skill'>
+function abTag(ab) {
+    let x = (abilityList[ab].title).slice(0, 3).toUpperCase()
+    return ` (${x})`
+}
+
+function changeIcon() {
+    if (!hasProficiency && !hasExpertise) {
+        return icon_base
+    } else if (hasProficiency && !hasExpertise) {
+        return icon_proficient
+    } else {
+        return icon_expert
+    }
+}
+
+let icon = changeIcon();
+
+return (
+    <div className='skill'>
             <button className='skillButton' onClick={handleClick}>
-                <img src=''></img>
+                <img src={icon}/>
             </button>
             <div className='skillInfo'>
-                <p>{name + abTag(ability-1)}</p>
+                <p className='skillTitle'>{name + abTag(ability-1)}</p>
                 <p>{sign(mod + bonus)}</p>
             </div>
         </div>

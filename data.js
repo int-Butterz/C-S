@@ -423,5 +423,5 @@ export const modCalc = (x) => {
 }
 
 export const sign = (x) => {
-    return x > 0 ? "+" + x : x;
+    return x >= 0 ? "+" + x : x;
 }

@@ -2,6 +2,7 @@ import { useState, useEffect} from 'react'
 import Skill from "./Skill"
 import { skills } from "../../data"
 import './Skill.css'
+import './Skills.css'
 
 function Skills() {
     const [data, setData] = new useState(() => { 
@@ -22,7 +23,7 @@ function Skills() {
     }
 
     return (
-        <div className='box'>
+        <div className='box' id='skills'>
             {data.map(x => <Skill key={x.id} {...x} updateSkill={updateSkill}/>)} 
         </div>
     )
