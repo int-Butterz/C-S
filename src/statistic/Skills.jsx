@@ -24,6 +24,7 @@ function Skills() {
 
     return (
         <div className='box' id='skills'>
+            <p className='sectionTitle'>Skills</p>
             {data.map(x => <Skill key={x.id} {...x} updateSkill={updateSkill}/>)} 
         </div>
     )

@@ -1,5 +1,6 @@
 #skills {
-    top: 280px;
-    right: 284px;
+    position: absolute;
     margin: 10px;
+    top: 295px;
+    left: 169px;
 }

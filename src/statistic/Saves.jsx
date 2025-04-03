@@ -3,7 +3,7 @@ import './Saves.css'
 function Saves() {
     return (
         <div className='box' id='saves'>
-            <p>saves</p>
+            <p className='sectionTitle'>Saving Throws</p>
         </div>
     )
 }

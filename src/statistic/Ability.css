@@ -11,6 +11,8 @@
     flex-flow: wrap column;
     align-items: center;
     justify-content: center;
+    background-color: white;
+
 }
 
 .abScore-e {
