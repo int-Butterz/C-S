@@ -3,12 +3,12 @@ import Saves from "./Saves.jsx"
 import Skills from "./Skills"
 import './Stats.css'
 
-function Stats() {
+function Stats(props) {
     return (
         <div id='stats'>
-            <Abilities />
+            <Abilities updateAbility={props.updateAbility}/>
             <Saves />
-            <Skills />
+            <Skills updateSkill={props.updateSkill}/>
         </div>
     )
 }

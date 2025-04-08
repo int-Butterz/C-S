@@ -18,8 +18,6 @@ function Skill({name, id, ability, hasProf, hasExp, updateSkill}) {
     const [hasProficiency, setHasProficiency] = new useState(hasProf);
     const [bonus, setBonus] = new useState(hasProficiency == true ? loadProf() : 0);
     
-    
-    
     function loadProf() {
         if (level >= 17) {
             return hasExpertise ? profBonus[5] * 2: profBonus[5];
