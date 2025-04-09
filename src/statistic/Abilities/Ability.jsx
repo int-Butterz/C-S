@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-import { modCalc, sign } from '../../data';
+import { modCalc, sign } from '../../../data';
 import './Ability.css'
 
 function Ability({id, title, score, updateAbility}) {
-    const [abScore, setAbScore] = new useState(score);
-    const [mod, setMod] = new useState(modCalc(score));
+    const [abScore, setAbScore] = useState(score);
+    const [mod, setMod] = useState(modCalc(score));
 
     useEffect(() => {
         setMod(modCalc(abScore));

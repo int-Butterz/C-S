@@ -1,22 +1,21 @@
 import { useState, useEffect} from 'react'
-import { modCalc, sign } from '../../data';
-import { profBonus } from '../../data';
+import { modCalc, sign } from '../../../data';
+import { profBonus } from '../../../data';
 
-import icon_base from "../assets/skills_icons/icon_base.png"
-import icon_proficient from "../assets/skills_icons/icon_proficient.png"
-import icon_expert from "../assets/skills_icons/icon_expert.png"
-
+import icon_base from "../../assets/skills_icons/icon_base.png"
+import icon_proficient from "../../assets/skills_icons/icon_proficient.png"
+import icon_expert from "../../assets/skills_icons/icon_expert.png"
 
 const abilityList = JSON.parse(localStorage.getItem("abilities"));
 const level = localStorage.getItem("level")
 
 function Skill({name, id, ability, hasProf, hasExp, updateSkill}) {
-    const [mod, setMod] = new useState(() => {
+    const [mod, setMod] = useState(() => {
         return modCalc(abilityList[ability-1].score)
     });
-    const [hasExpertise, setHasExpertise] = new useState(hasExp);
-    const [hasProficiency, setHasProficiency] = new useState(hasProf);
-    const [bonus, setBonus] = new useState(hasProficiency == true ? loadProf() : 0);
+    const [hasExpertise, setHasExpertise] = useState(hasExp);
+    const [hasProficiency, setHasProficiency] = useState(hasProf);
+    const [bonus, setBonus] = useState(hasProficiency == true ? loadProf() : 0);
     
     function loadProf() {
         if (level >= 17) {

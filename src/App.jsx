@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Stats from './statistic/Stats'
 import Info from './info/Info'
@@ -14,7 +14,7 @@ function App() {
   });
 
   useEffect(() => {
-    localStorage.setItem("skills", JSON.stringify(data));    
+    localStorage.setItem("skills", JSON.stringify(skillData));    
   }, [skillData]);
 
   const updateSkill = (id2, val1, val2) => {
@@ -46,7 +46,7 @@ function App() {
   return (
     <>
       <Info />
-      <Stats updateAbility={updateAbility} updateSkill={updateSkill}/>
+      <Stats abilityData={abilityData} updateAbility={updateAbility} skillData={skillData} updateSkill={updateSkill}/>
     </>
   )
 }

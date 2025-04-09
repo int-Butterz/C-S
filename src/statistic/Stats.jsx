@@ -1,14 +1,14 @@
-import Abilities from "./Abilities.jsx"
-import Saves from "./Saves.jsx"
-import Skills from "./Skills"
+import Abilities from "./Abilities/Abilities.jsx"
+import Saves from "./Saves/Saves.jsx"
+import Skills from "./Skills/Skills.jsx"
 import './Stats.css'
 
 function Stats(props) {
     return (
         <div id='stats'>
-            <Abilities updateAbility={props.updateAbility}/>
+            <Abilities data={props.abilityData} updateAbility={props.updateAbility}/>
             <Saves />
-            <Skills updateSkill={props.updateSkill}/>
+            <Skills data={props.skillData} updateSkill={props.updateSkill}/>
         </div>
     )
 }
