@@ -1,18 +1,17 @@
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { modCalc, sign } from '../../../data';
 import { profBonus } from '../../../data';
-
-import icon_base from "../../assets/skills_icons/icon_base.png"
-import icon_proficient from "../../assets/skills_icons/icon_proficient.png"
-import icon_expert from "../../assets/skills_icons/icon_expert.png"
+import Icon from './Icon';
 
 const abilityList = JSON.parse(localStorage.getItem("abilities"));
 const level = localStorage.getItem("level")
 
+import { useContext } from 'react';
+import { AbilityContext } from '../../App';
+
 function Skill({name, id, ability, hasProf, hasExp, updateSkill}) {
-    const [mod, setMod] = useState(() => {
-        return modCalc(abilityList[ability-1].score)
-    });
+    const abilityContext = useContext(AbilityContext)
+    
     const [hasExpertise, setHasExpertise] = useState(hasExp);
     const [hasProficiency, setHasProficiency] = useState(hasProf);
     const [bonus, setBonus] = useState(hasProficiency == true ? loadProf() : 0);
@@ -37,7 +36,6 @@ function Skill({name, id, ability, hasProf, hasExp, updateSkill}) {
         updateSkill(id, hasProficiency, hasExpertise);
     }, [hasProficiency, hasExpertise]);
     
-    
     function handleClick() {
         setBonus((prevValue) => {
             if (hasProficiency == true && hasExpertise == true) {
@@ -54,38 +52,25 @@ function Skill({name, id, ability, hasProf, hasExp, updateSkill}) {
                 prevValue = loadProf();
                 return prevValue;
             };
-        }
-    )
-}
-
-function abTag(ab) {
-    let x = (abilityList[ab].title).slice(0, 3).toUpperCase()
-    return ` (${x})`
-}
-
-function changeIcon() {
-    if (!hasProficiency && !hasExpertise) {
-        return icon_base
-    } else if (hasProficiency && !hasExpertise) {
-        return icon_proficient
-    } else {
-        return icon_expert
+        })
     }
-}
 
-let icon = changeIcon();
+    function abTag(ab) {
+        let x = (abilityList[ab].title).slice(0, 3).toUpperCase()
+        return ` (${x})`
+    } 
 
-return (
-    <div className='skill'>
+    return (
+        <div className='skill'>
             <button className='skillButton' onClick={handleClick}>
-                <img src={icon}/>
+                <Icon hasProficiency={hasProficiency} hasExpertise={hasExpertise} />
             </button>
             <div className='skillInfo'>
                 <p className='skillTitle'>{name + abTag(ability-1)}</p>
-                <p>{sign(mod + bonus)}</p>
+                <p>{sign(modCalc(abilityContext[ability-1].score) + bonus)}</p>
             </div>
         </div>
-    )   
+    )       
 }
 
 export default Skill

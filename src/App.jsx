@@ -1,10 +1,13 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext } from 'react'
 import './App.css'
 import Stats from './statistic/Stats'
 import Info from './info/Info'
 
 import { skills } from '../data'
 import { abilities } from '../data'
+
+export const AbilityContext = createContext();
+export const SkillContext = createContext();
 
 function App() {
   //Skills
@@ -46,7 +49,9 @@ function App() {
   return (
     <>
       <Info />
-      <Stats abilityData={abilityData} updateAbility={updateAbility} skillData={skillData} updateSkill={updateSkill}/>
+      <AbilityContext.Provider value={abilityData}>
+        <Stats abilityData={abilityData} updateAbility={updateAbility} skillData={skillData} updateSkill={updateSkill}/>
+      </AbilityContext.Provider>
     </>
   )
 }
